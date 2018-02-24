@@ -9,6 +9,52 @@
     <script src="./assets/javascript/game.js"></script>
 </head>
 <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+          <div class="jumbotron">
+            <h2>You just typed <span id="user-text"><strong>...Nothing.</strong></span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- We have to put this at the end of our document to ensure the user-text
+         span exists when we try to access it. -->
+    <script type="text/javascript">
+        let userGuess = document.getElementById("user-guess");
+        let computerGuess = document.getElementById("computer-guess");
+        let winTotal = document.getElementById("win");
+        let lossTotal = document.getElementById("loss");
+        let tieTotal = document.getElementById("ties");
+
+        let computerChoices = ['r', 'p', 's'];
+        let wins = 0;
+        let loss = 0;
+        let tie = 0;
     
+        document.onkeyup = function(e) {
+
+        //innerHTML also works instead of textContent
+        userGuess.textContent = e.key;
+        computerGuess.textContent = computerChoices[Math.floor(Math.random()*computerChoices.length)];
+        //document.getElementById("computer-guess").textContent = computerGuess;
+        
+        if ((userGuess.textContent === 'r' && computerGuess.textContent === 's') 
+        || (userGuess.textContent === 'p' && computerGuess.textContent === 'r') 
+        || (userGuess.textContent === 's' && computerGuess.textContent === 'p')){
+            wins++;
+            winTotal.textContent = wins;
+        }
+        else if (userGuess.textContent === computerGuess.textContent) {
+            tie++;
+            tieTotal.textContent = tie;
+        }
+        else {
+            loss++;
+            lossTotal.textContent = loss;
+        }
+        };
+    </script>
 </body>
 </html>
