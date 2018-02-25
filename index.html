@@ -13,7 +13,11 @@
       <div class="row">
         <div class="col-md-offset-2 col-md-8">
           <div class="jumbotron">
-            <h2>You just typed <span id="user-text"><strong>...Nothing.</strong></span></h2>
+                <h2>You chose:<span id="user-guess">...</span></h2>
+                <h2>Computer chose:<span id="computer-guess">...</span></h2>
+                <h2>Wins:<span id="win">...</span></h2>
+                <h2>Losses:<span id="loss">...</span></h2>
+                <h2>Ties:<span id="ties">...</span></h2>
           </div>
         </div>
       </div>
@@ -26,12 +30,11 @@
         let computerGuess = document.getElementById("computer-guess");
         let winTotal = document.getElementById("win");
         let lossTotal = document.getElementById("loss");
-        let tieTotal = document.getElementById("ties");
 
-        let computerChoices = ['r', 'p', 's'];
+        let computerChoices = ['a', 'b', 'c','d','e','f','g','h','i','j','k','l','m','n','o','p',
+        'q','r','s','t','u','v','w','x','y','z'];
         let wins = 0;
         let loss = 0;
-        let tie = 0;
     
         document.onkeyup = function(e) {
 
@@ -40,15 +43,9 @@
         computerGuess.textContent = computerChoices[Math.floor(Math.random()*computerChoices.length)];
         //document.getElementById("computer-guess").textContent = computerGuess;
         
-        if ((userGuess.textContent === 'r' && computerGuess.textContent === 's') 
-        || (userGuess.textContent === 'p' && computerGuess.textContent === 'r') 
-        || (userGuess.textContent === 's' && computerGuess.textContent === 'p')){
-            wins++;
-            winTotal.textContent = wins;
-        }
-        else if (userGuess.textContent === computerGuess.textContent) {
-            tie++;
-            tieTotal.textContent = tie;
+        if (userGuess.textContent === computerGuess.textContent) {
+            win++;
+            winTotal.textContent = win;
         }
         else {
             loss++;
