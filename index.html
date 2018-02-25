@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-md-offset-2 col-md-8">
           <div class="jumbotron">
-                <h1></h1>
+                <h1 id="title">Psychic Game!</h1>
                 <h2>You chose:<span id="user-guess">...</span></h2>
                 <h2>Computer chose:<span id="computer-guess">...</span></h2>
                 <h2>Wins:<span id="win">...</span></h2>
@@ -32,6 +32,7 @@
         let winTotal = document.getElementById("win");
         let lossTotal = document.getElementById("loss");
         let triesTotal = document.getElementById("tries");
+        let title = document.getElementById("title");
 
         let computerChoices = ['a', 'b', 'c','d','e','f','g','h','i','j','k','l','m','n','o','p',
         'q','r','s','t','u','v','w','x','y','z'];
@@ -60,7 +61,8 @@
             lossTotal.textContent = loss;
             triesTotal.textContent = triesLeft;
             if(triesLeft===0){
-                location.reload();
+                    location.reload();
+                
             }
 
         }
